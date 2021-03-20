@@ -1,0 +1,12 @@
+apiVersion: 1
+
+datasources:
+  - name: InterSystems IRIS
+    type: grafana-intersystems-datasource
+    url: localhost:1972
+    user: _SYSTEM
+    database: USER
+    secureJsonData:
+      password: "SYS"
+    jsonData:
+    isDefault: true
