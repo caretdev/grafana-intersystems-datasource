@@ -8,6 +8,12 @@ This is Grafana data source for showing metrics from InterSystems IRIS
 
 - Utilizes InterSystems xDBC protocol
 
+## Testing
+
+- Clone this repo
+- `docker-compose up -d`
+- open localhost:3000
+
 ## Configuration
 
 ![NewDataSource](img/configuration.png)

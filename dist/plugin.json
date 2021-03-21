@@ -1,0 +1,38 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "datasource",
+  "name": "InterSystems",
+  "id": "grafana-intersystems-datasource",
+  "category": "sql",
+  "metrics": true,
+  "backend": true,
+  "executable": "gpx_grafana-intersystems-plugin",
+  "info": {
+    "description": "Data source for InterSystems IRIS",
+    "author": {
+      "name": "CaretDev",
+      "url": "https://caretdev.com"
+    },
+    "keywords": [
+      "intersystems",
+      "datasource"
+    ],
+    "logos": {
+      "small": "img/intersystems.svg",
+      "large": "img/intersystems.svg"
+    },
+    "links": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/caretdev/grafana-intersystems-datasource"
+      }
+    ],
+    "screenshots": [],
+    "version": "0.1.0",
+    "updated": "2021-03-21"
+  },
+  "dependencies": {
+    "grafanaDependency": ">=7.0.0",
+    "plugins": []
+  }
+}
