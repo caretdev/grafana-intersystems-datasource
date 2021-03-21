@@ -3,6 +3,7 @@ package plugin
 import (
 	"context"
 
+	"github.com/caretdev/grafana-intersystems-datasource/pkg/dfutil"
 	"github.com/caretdev/grafana-intersystems-datasource/pkg/intersystems"
 	"github.com/caretdev/grafana-intersystems-datasource/pkg/models"
 	"github.com/grafana/grafana-plugin-sdk-go/backend"
@@ -12,6 +13,14 @@ import (
 // Instance is the root Datasource implementation that wraps a Datasource
 type Instance struct {
 	Datasource Datasource
+}
+
+func (i *Instance) HandleMetricsQuery(ctx context.Context, q *models.MetricsQuery, req backend.DataQuery) (dfutil.Framer, error) {
+	return i.Datasource.HandleMetricsQuery(ctx, q, req)
+}
+
+func (i *Instance) HandleAlertsQuery(ctx context.Context, q *models.AlertsQuery, req backend.DataQuery) (dfutil.Framer, error) {
+	return i.Datasource.HandleAlertsQuery(ctx, q, req)
 }
 
 // CheckHealth ...

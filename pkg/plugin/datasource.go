@@ -3,11 +3,15 @@ package plugin
 import (
 	"context"
 
+	"github.com/caretdev/grafana-intersystems-datasource/pkg/dfutil"
+	"github.com/caretdev/grafana-intersystems-datasource/pkg/models"
 	"github.com/grafana/grafana-plugin-sdk-go/backend"
 )
 
 // The Datasource type handles the requests sent to the datasource backend
 type Datasource interface {
+	HandleMetricsQuery(context.Context, *models.MetricsQuery, backend.DataQuery) (dfutil.Framer, error)
+	HandleAlertsQuery(ctx context.Context, query *models.AlertsQuery, req backend.DataQuery) (dfutil.Framer, error)
 	CheckHealth(context.Context) error
 }
 

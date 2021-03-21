@@ -3,8 +3,7 @@ services:
   grafana:
     image: grafana/grafana:master
     ports:
-      - '3080:3000'
-      - '3081:52773'
+      - '3000:3000'
     volumes:
       - ./:/var/lib/grafana/plugins/grafana-intersystems-datasource
       - grafana-storage:/var/lib/grafana
@@ -17,16 +16,17 @@ services:
       - GF_AUTH_BASIC_ENABLED=false
       - GF_LOG_LEVEL=debug
       - GF_DATAPROXY_LOGGING=true
-      - GF_FEATURE_TOGGLES_ENABLE=expressions inspect transformations newEdit
+      - GF_FEATURE_TOGGLES_ENABLE=expressions inspect transformations newEdit live
       - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=grafana-intersystems-datasource
   iris:
     image: store/intersystems/iris-community:2020.4.0.524.0
     init: true
+    ports:
+      - '3081:52773'
     volumes:
       - ./iris-init.sh:/iris-init.sh
     command:
       - -a
       - /iris-init.sh
-    network_mode: service:grafana
 volumes:
   grafana-storage:

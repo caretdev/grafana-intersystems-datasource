@@ -46,7 +46,7 @@ export class ConfigEditor extends PureComponent<Props, State> {
               css=""
               value={url}
               placeholder="localhost:1972"
-              onChange={onUpdateDatasourceOption(this.props, 'user')}
+              onChange={onUpdateDatasourceOption(this.props, 'url')}
               required
             />
           </div>

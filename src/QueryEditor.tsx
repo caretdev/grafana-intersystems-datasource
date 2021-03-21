@@ -1,49 +1,46 @@
 import defaults from 'lodash/defaults';
 
-import React, { ChangeEvent, PureComponent } from 'react';
-import { LegacyForms } from '@grafana/ui';
-import { QueryEditorProps } from '@grafana/data';
+import React, { PureComponent } from 'react';
+import { InlineField, Select } from '@grafana/ui';
+import { QueryEditorProps, SelectableValue } from '@grafana/data';
 import { DataSource } from './datasource';
-import { defaultQuery, DataSourceOptions, MyQuery } from './types';
+import { defaultQuery, DataSourceOptions, QueryType, Metrics } from './types';
 
-const { FormField } = LegacyForms;
+type Props = QueryEditorProps<DataSource, Metrics, DataSourceOptions>;
 
-type Props = QueryEditorProps<DataSource, MyQuery, DataSourceOptions>;
-
+const labelWidth = 12;
 export class QueryEditor extends PureComponent<Props> {
-  onQueryTextChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { onChange, query } = this.props;
-    onChange({ ...query, queryText: event.target.value });
-  };
+  queryTypes: Array<SelectableValue<QueryType>> = [
+    {
+      label: 'Metrics',
+      value: QueryType.Metrics,
+      description: 'SAM Current Metrics',
+    },
+    {
+      label: 'Alerts',
+      value: QueryType.Alerts,
+      description: 'SAM Latest Alerts',
+    },
+  ];
 
-  onConstantChange = (event: ChangeEvent<HTMLInputElement>) => {
+  onQueryTypeChange = (sel: SelectableValue<QueryType>) => {
     const { onChange, query, onRunQuery } = this.props;
-    onChange({ ...query, constant: parseFloat(event.target.value) });
-    // executes the query
+    onChange({ ...query, queryType: sel.value! });
     onRunQuery();
   };
 
   render() {
     const query = defaults(this.props.query, defaultQuery);
-    const { queryText, constant } = query;
 
     return (
       <div className="gf-form">
-        <FormField
-          width={4}
-          value={constant}
-          onChange={this.onConstantChange}
-          label="Constant"
-          type="number"
-          step="0.1"
-        />
-        <FormField
-          labelWidth={8}
-          value={queryText || ''}
-          onChange={this.onQueryTextChange}
-          label="Query Text"
-          tooltip="Not used yet"
-        />
+        <InlineField label="Query type" grow={true} labelWidth={labelWidth}>
+          <Select
+            options={this.queryTypes}
+            value={this.queryTypes.find((v) => v.value === query.queryType) || this.queryTypes[0]}
+            onChange={this.onQueryTypeChange}
+          />
+        </InlineField>
       </div>
     );
   }

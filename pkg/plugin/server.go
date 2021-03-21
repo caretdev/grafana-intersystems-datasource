@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 
+	"github.com/caretdev/grafana-intersystems-datasource/pkg/models"
 	"github.com/grafana/grafana-plugin-sdk-go/backend"
 	"github.com/grafana/grafana-plugin-sdk-go/backend/datasource"
 	"github.com/pkg/errors"
@@ -40,17 +41,8 @@ func UnmarshalQuery(b []byte, v interface{}) *backend.DataResponse {
 func GetQueryHandlers(s *Server) *datasource.QueryTypeMux {
 	mux := datasource.NewQueryTypeMux()
 
-	// // This could be a map[models.QueryType]datasource.QueryHandlerFunc and then a loop to handle all of them.
-	// mux.HandleFunc(models.QueryTypeCommits, s.HandleCommits)
-	// mux.HandleFunc(models.QueryTypeIssues, s.HandleIssues)
-	// mux.HandleFunc(models.QueryTypeContributors, s.HandleContributors)
-	// mux.HandleFunc(models.QueryTypeLabels, s.HandleLabels)
-	// mux.HandleFunc(models.QueryTypePullRequests, s.HandlePullRequests)
-	// mux.HandleFunc(models.QueryTypeReleases, s.HandleReleases)
-	// mux.HandleFunc(models.QueryTypeTags, s.HandleTags)
-	// mux.HandleFunc(models.QueryTypePackages, s.HandlePackages)
-	// mux.HandleFunc(models.QueryTypeMilestones, s.HandleMilestones)
-	// mux.HandleFunc(models.QueryTypeRepositories, s.HandleRepositories)
+	mux.HandleFunc(models.QueryTypeMetrics, s.HandleMetrics)
+	mux.HandleFunc(models.QueryTypeAlerts, s.HandleAlerts)
 
 	return mux
 }
