@@ -5,12 +5,9 @@ export enum QueryType {
   Alerts = 'alerts',
 }
 
-export interface InterSystemsQuery extends Metrics {
+export interface InterSystemsQuery extends DataQuery {}
 
-}
-
-export interface Metrics extends DataQuery {
-}
+export interface Metrics extends DataQuery {}
 
 export const defaultQuery: Partial<Metrics> = {
   queryType: QueryType.Metrics,

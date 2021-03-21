@@ -37,7 +37,7 @@ export class QueryEditor extends PureComponent<Props> {
         <InlineField label="Query type" grow={true} labelWidth={labelWidth}>
           <Select
             options={this.queryTypes}
-            value={this.queryTypes.find((v) => v.value === query.queryType) || this.queryTypes[0]}
+            value={this.queryTypes.find(v => v.value === query.queryType) || this.queryTypes[0]}
             onChange={this.onQueryTypeChange}
           />
         </InlineField>
