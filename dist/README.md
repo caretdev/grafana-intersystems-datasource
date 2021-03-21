@@ -18,6 +18,10 @@ This is Grafana data source for showing metrics from InterSystems IRIS
 
 ![NewDataSource](img/configuration.png)
 
+## Explore
+
+![Metrics](img/metrics.png)
+
 ## Learn more
 
 - [InterSystems](https://intersystems.com)
