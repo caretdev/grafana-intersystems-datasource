@@ -18,8 +18,11 @@ func (d *Datasource) HandleMetricsQuery(ctx context.Context, query *models.Metri
 	return GetAllMetrics(ctx, d.client, opt)
 }
 
-func (d *Datasource) HandleAlertsQuery(ctx context.Context, query *models.AlertsQuery, req backend.DataQuery) (dfutil.Framer, error) {
-	return nil, nil
+func (d *Datasource) HandleLogQuery(ctx context.Context, query *models.LogQuery, req backend.DataQuery) (dfutil.Framer, error) {
+	opt := models.ListLogOptions {
+		File: query.Options.File,
+	}
+	return GetLog(ctx, d.client, opt)
 }
 
 func (d *Datasource) CheckHealth(ctx context.Context) error {

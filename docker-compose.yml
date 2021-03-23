@@ -23,6 +23,7 @@ services:
     init: true
     ports:
       - '3081:52773'
+      - '3082:1972'
     volumes:
       - ./iris-init.sh:/iris-init.sh
     command:

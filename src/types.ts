@@ -2,16 +2,30 @@ import { DataQuery, DataSourceJsonData } from '@grafana/data';
 
 export enum QueryType {
   Metrics = 'metrics',
-  Alerts = 'alerts',
+  Log = 'log',
 }
-
-export interface InterSystemsQuery extends DataQuery {}
 
 export interface Metrics extends DataQuery {}
 
 export const defaultQuery: Partial<Metrics> = {
   queryType: QueryType.Metrics,
 };
+
+export interface MetricsOptions {
+  name?: string;
+}
+
+export interface LogOptions {
+  file?: string;
+}
+export interface InterSystemsQuery extends DataQuery {
+  options?: MetricsOptions | LogOptions;
+}
+
+export enum LogFile {
+  Messages = 'messages.log',
+  Alerts = 'alerts.log',
+}
 
 /**
  * These are options configured for each DataSource instance

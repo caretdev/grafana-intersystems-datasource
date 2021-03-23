@@ -2,13 +2,13 @@ package models
 
 const (
 	QueryTypeMetrics = "metrics"
-	QueryTypeAlerts = "alerts"
+	QueryTypeLog = "log"
 )
 
 type MetricsQuery struct {
-	
+	Options ListMetricsOptions `json:"options"`
 }
 
-type AlertsQuery struct {
-
+type LogQuery struct {
+	Options ListLogOptions `json:"options"`
 }

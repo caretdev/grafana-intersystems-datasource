@@ -19,8 +19,8 @@ func (i *Instance) HandleMetricsQuery(ctx context.Context, q *models.MetricsQuer
 	return i.Datasource.HandleMetricsQuery(ctx, q, req)
 }
 
-func (i *Instance) HandleAlertsQuery(ctx context.Context, q *models.AlertsQuery, req backend.DataQuery) (dfutil.Framer, error) {
-	return i.Datasource.HandleAlertsQuery(ctx, q, req)
+func (i *Instance) HandleLogQuery(ctx context.Context, q *models.LogQuery, req backend.DataQuery) (dfutil.Framer, error) {
+	return i.Datasource.HandleLogQuery(ctx, q, req)
 }
 
 // CheckHealth ...

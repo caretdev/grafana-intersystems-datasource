@@ -42,7 +42,7 @@ func GetQueryHandlers(s *Server) *datasource.QueryTypeMux {
 	mux := datasource.NewQueryTypeMux()
 
 	mux.HandleFunc(models.QueryTypeMetrics, s.HandleMetrics)
-	mux.HandleFunc(models.QueryTypeAlerts, s.HandleAlerts)
+	mux.HandleFunc(models.QueryTypeLog, s.HandleLog)
 
 	return mux
 }

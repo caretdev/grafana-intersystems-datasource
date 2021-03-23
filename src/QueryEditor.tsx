@@ -4,9 +4,9 @@ import React, { PureComponent } from 'react';
 import { InlineField, Select } from '@grafana/ui';
 import { QueryEditorProps, SelectableValue } from '@grafana/data';
 import { DataSource } from './datasource';
-import { defaultQuery, DataSourceOptions, QueryType, Metrics } from './types';
+import { defaultQuery, DataSourceOptions, QueryType, LogFile, InterSystemsQuery, LogOptions } from './types';
 
-type Props = QueryEditorProps<DataSource, Metrics, DataSourceOptions>;
+type Props = QueryEditorProps<DataSource, InterSystemsQuery, DataSourceOptions>;
 
 const labelWidth = 12;
 export class QueryEditor extends PureComponent<Props> {
@@ -17,9 +17,20 @@ export class QueryEditor extends PureComponent<Props> {
       description: 'SAM Current Metrics',
     },
     {
+      label: 'Log',
+      value: QueryType.Log,
+      description: 'Log files',
+    },
+  ];
+
+  logs: Array<SelectableValue<LogFile>> = [
+    {
       label: 'Alerts',
-      value: QueryType.Alerts,
-      description: 'SAM Latest Alerts',
+      value: LogFile.Alerts,
+    },
+    {
+      label: 'Messages',
+      value: LogFile.Messages,
     },
   ];
 
@@ -29,19 +40,36 @@ export class QueryEditor extends PureComponent<Props> {
     onRunQuery();
   };
 
+  onLogFileChange = (sel: SelectableValue<LogFile>) => {
+    const { onChange, query, onRunQuery } = this.props;
+    onChange({ ...query, options: { file: sel.value! } });
+    onRunQuery();
+  };
+
   render() {
     const query = defaults(this.props.query, defaultQuery);
 
     return (
-      <div className="gf-form">
+      <>
         <InlineField label="Query type" grow={true} labelWidth={labelWidth}>
           <Select
             options={this.queryTypes}
             value={this.queryTypes.find(v => v.value === query.queryType) || this.queryTypes[0]}
             onChange={this.onQueryTypeChange}
+            width={32}
           />
         </InlineField>
-      </div>
+        {query.queryType === 'log' && (
+          <InlineField label="File" labelWidth={labelWidth}>
+            <Select
+              options={this.logs}
+              value={this.logs.find(v => v.value === (query.options as LogOptions)?.file)}
+              onChange={this.onLogFileChange}
+              width={32}
+            />
+          </InlineField>
+        )}
+      </>
     );
   }
 }
