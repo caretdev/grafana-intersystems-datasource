@@ -1,6 +1,6 @@
 package models
 
 type ListMetricsOptions struct {
-	Name  string
+	Name  string `json:"name"`
 	Value string
 }

@@ -14,8 +14,12 @@ type Datasource struct {
 
 func (d *Datasource) HandleMetricsQuery(ctx context.Context, query *models.MetricsQuery, req backend.DataQuery) (dfutil.Framer, error) {
 	opt := models.ListMetricsOptions{
+		Name: query.Options.Name,
 	}
-	return GetAllMetrics(ctx, d.client, opt)
+	if req.RefID == "listMetrics" {
+		return GetListMetrics(ctx, d.client, opt)
+	}
+ 	return GetAllMetrics(ctx, d.client, opt)
 }
 
 func (d *Datasource) HandleLogQuery(ctx context.Context, query *models.LogQuery, req backend.DataQuery) (dfutil.Framer, error) {
