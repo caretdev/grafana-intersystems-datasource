@@ -1,6 +1,8 @@
 package intersystems
 
-import "github.com/caretdev/go-irisnative/src/connection"
+import (
+	"github.com/caretdev/go-irisnative/src/connection"
+)
 
 type InterSystems struct {
 	addr      string
@@ -15,4 +17,8 @@ func NewInterSystems(addr, namespace, user, password string) InterSystems {
 
 func (i InterSystems) Connect() (connection.Connection, error) {
 	return connection.Connect(i.addr, i.namespace, i.user, i.password)
+}
+
+func (i InterSystems) ConnectSYS() (connection.Connection, error) {
+	return connection.Connect(i.addr, "%SYS", i.user, i.password)
 }

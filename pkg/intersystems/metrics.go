@@ -101,7 +101,7 @@ func GetAllMetrics(ctx context.Context, client InterSystems, opts models.ListMet
 	)
 	var conn connection.Connection
 	var err error
-	if conn, err = client.Connect(); err != nil {
+	if conn, err = client.ConnectSYS(); err != nil {
 		return Metrics{metrics, split, ts}, err
 	}
 	defer conn.Disconnect()

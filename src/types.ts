@@ -3,6 +3,7 @@ import { DataQuery, DataSourceJsonData } from '@grafana/data';
 export enum QueryType {
   Metrics = 'metrics',
   Log = 'log',
+  ApplicationErrors = 'application_errors',
 }
 
 export interface Metrics extends DataQuery {}

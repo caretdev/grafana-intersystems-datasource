@@ -68,7 +68,7 @@ func GetLog(ctx context.Context, client InterSystems, opts models.ListLogOptions
 	}
 	var conn connection.Connection
 	var err error
-	if conn, err = client.Connect(); err != nil {
+	if conn, err = client.ConnectSYS(); err != nil {
 		return log, err
 	}
 	defer conn.Disconnect()

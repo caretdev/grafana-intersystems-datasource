@@ -40,6 +40,11 @@ export class QueryEditor extends PureComponent<Props, State> {
       value: QueryType.Log,
       description: 'Log files',
     },
+    {
+      label: 'Application Errors',
+      value: QueryType.ApplicationErrors,
+      description: 'Application Errors',
+    },
   ];
 
   logs: Array<SelectableValue<LogFile>> = [

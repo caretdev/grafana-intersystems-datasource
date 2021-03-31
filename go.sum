@@ -57,6 +57,8 @@ github.com/caretdev/go-irisnative v0.0.0-20210320100727-dee265b54d39 h1:nuI2t5qP
 github.com/caretdev/go-irisnative v0.0.0-20210320100727-dee265b54d39/go.mod h1:zm/DF67cTmMsHIv61NP7tND0yHmMOl3Q8wOrVOgAVDg=
 github.com/caretdev/go-irisnative v0.0.0-20210322105154-08eee4e4326f h1:YNlOA6EAT2ota1jqQtXqIB9JWmcRM4YCPAd79uJY4YA=
 github.com/caretdev/go-irisnative v0.0.0-20210322105154-08eee4e4326f/go.mod h1:zm/DF67cTmMsHIv61NP7tND0yHmMOl3Q8wOrVOgAVDg=
+github.com/caretdev/go-irisnative v0.0.0-20210331172502-1e9667a625c8 h1:qWHijw+5u7d3fDuAFOPzTMmK1i9IKTqTMTqB45m/PC4=
+github.com/caretdev/go-irisnative v0.0.0-20210331172502-1e9667a625c8/go.mod h1:zm/DF67cTmMsHIv61NP7tND0yHmMOl3Q8wOrVOgAVDg=
 github.com/casbin/casbin/v2 v2.1.2 h1:bTwon/ECRx9dwBy2ewRVr5OiqjeXSGiTUY74sDPQi/g=
 github.com/casbin/casbin/v2 v2.1.2/go.mod h1:YcPU1XXisHhLzuxH9coDNf2FbKpjGlbCg3n9yuLkIJQ=
 github.com/cenkalti/backoff v2.2.1+incompatible h1:tNowT99t7UNflLxfYYSlKYsBpXdEet03Pg2g16Swow4=

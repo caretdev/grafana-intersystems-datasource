@@ -29,6 +29,12 @@ func (d *Datasource) HandleLogQuery(ctx context.Context, query *models.LogQuery,
 	return GetLog(ctx, d.client, opt)
 }
 
+func (d *Datasource) HandleApplicationErrorsQuery(ctx context.Context, query *models.ApplicationErrorsQuery, req backend.DataQuery) (dfutil.Framer, error) {
+	opt := models.ListApplicationErrorsOptions {
+	}
+	return GetApplicationErrors(ctx, d.client, opt)
+}
+
 func (d *Datasource) CheckHealth(ctx context.Context) error {
 	var conn, err = d.client.Connect()
 	if err != nil {
@@ -39,7 +45,6 @@ func (d *Datasource) CheckHealth(ctx context.Context) error {
 }
 
 func NewDatasource(ctx context.Context, settings models.Settings) *Datasource {
-	addr, user, password := settings.Addr, settings.User, settings.Password
-	namespace := "%SYS"
+	addr, namespace, user, password := settings.Addr, settings.Namespace, settings.User, settings.Password
 	return &Datasource{NewInterSystems(addr, namespace, user, password)}
 }

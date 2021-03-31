@@ -12,6 +12,7 @@ import (
 type Datasource interface {
 	HandleMetricsQuery(context.Context, *models.MetricsQuery, backend.DataQuery) (dfutil.Framer, error)
 	HandleLogQuery(context.Context, *models.LogQuery, backend.DataQuery) (dfutil.Framer, error)
+	HandleApplicationErrorsQuery(context.Context, *models.ApplicationErrorsQuery, backend.DataQuery) (dfutil.Framer, error)
 	CheckHealth(context.Context) error
 }
 

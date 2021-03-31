@@ -23,6 +23,10 @@ func (i *Instance) HandleLogQuery(ctx context.Context, q *models.LogQuery, req b
 	return i.Datasource.HandleLogQuery(ctx, q, req)
 }
 
+func (i *Instance) HandleApplicationErrorsQuery(ctx context.Context, q *models.ApplicationErrorsQuery, req backend.DataQuery) (dfutil.Framer, error) {
+	return i.Datasource.HandleApplicationErrorsQuery(ctx, q, req)
+}
+
 // CheckHealth ...
 func (i *Instance) CheckHealth(ctx context.Context) error {
 	return i.Datasource.CheckHealth(ctx)
