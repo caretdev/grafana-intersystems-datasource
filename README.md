@@ -7,6 +7,9 @@ This is Grafana data source for showing metrics from InterSystems IRIS
 ## Features
 
 - Utilizes InterSystems xDBC protocol
+- Streaming of SAM Metrics in realtime updated with interval set in Grafana, with history
+- Shows Logs: Alerts and Messages
+- Application Errors (stored in ^ERRORS)
 
 ## Testing
 
