@@ -116,6 +116,9 @@ func GetAllMetrics(ctx context.Context, client InterSystems, opts models.ListMet
 			continue
 		}
 		v, _ := strconv.ParseFloat(value, 64)
+		if id == "" {
+			id = "Value"
+		}
 		m := Metric{name, id, v}
 		metrics = append(metrics, m)
 	}
