@@ -19,11 +19,19 @@ This is Grafana data source for showing metrics from InterSystems IRIS
 
 ## Configuration
 
-![NewDataSource](img/configuration.png)
+With docker-compose it will be provisioned automatically, and will only allow to test the connection.
+
+![NewDataSource](https://raw.githubusercontent.com/caretdev/grafana-intersystems-datasource/main/img/configuration.png)
 
 ## Explore
 
-![Metrics](img/metrics.png)
+![Metrics](https://raw.githubusercontent.com/caretdev/grafana-intersystems-datasource/main/img/metrics.png)
+
+## Panels
+
+![MetricsPanel](https://raw.githubusercontent.com/caretdev/grafana-intersystems-datasource/main/img/MetricsPanel.png)
+![LogsPanel](https://raw.githubusercontent.com/caretdev/grafana-intersystems-datasource/main/img/LogsPanel.png)
+![ErrorsPanel](https://raw.githubusercontent.com/caretdev/grafana-intersystems-datasource/main/img/ErrorsPanel.png)
 
 ## Learn more
 

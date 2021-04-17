@@ -28,6 +28,6 @@ services:
       - ./iris-init.sh:/iris-init.sh
     command:
       - -a
-      - /iris-init.sh
+      - iris session iris -U%SYS '##class(Security.Users).UnExpireUserPasswords("*")'
 volumes:
   grafana-storage:
